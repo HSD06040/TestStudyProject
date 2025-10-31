@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.AddressableAssets.Settings;
 
 public class EditorScript
 {
@@ -8,6 +9,9 @@ public class EditorScript
     [MenuItem("Build/Build Windows Standalone")]
     static void PerformBuild()
     {
+        AddressableAssetSettings.CleanPlayerContent();        
+        AddressableAssetSettings.BuildPlayerContent();
+
         BuildPipeline.BuildPlayer(FindEnabledEditorScenes(), "Builds/Windows/MyGame.exe", BuildTarget.StandaloneWindows, BuildOptions.None);
     }
 
